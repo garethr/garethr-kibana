@@ -1,8 +1,25 @@
+# = Class: kibana
+#
+# Installs latest ruby implementation of kibana
+#
+# == Parameters:
+#
+# none - all config is pulled from the kibana::config class
+#
+# == Actions:
+#
+# Installs ruby kibana, edits configs, starts service
+#
+# == Requires:
+#
+# kibana::config
+
 class kibana(
-  $git_hash = 'edb4553',
-){
-  class { 'kibana::install': } ->
-  class { 'kibana::config': } ~>
-  class { 'kibana::service': } ->
-  Class['kibana']
+) {
+  Class ['kibana::install'] -> Class ['kibana::config']
+  Class ['kibana::config']  ~> Class ['kibana::service'] 
+  Class ['kibana::service'] -> Class['kibana']
+
+  class { 'kibana::install': }
+  class { 'kibana::service': }
 }
