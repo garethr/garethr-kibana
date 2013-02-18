@@ -18,7 +18,7 @@ class kibana::install {
     before  => Exec['bundle_kibana'],
   }
 
-  $ruby_pkgs = $operatingsystem ? {
+  $ruby_pkgs = $::operatingsystem ? {
     'Ubuntu'  => [ "ruby-bundler", "rubygems" ],
     default   => [ "ruby-bundler", "rubygems" ],
   }
@@ -32,5 +32,6 @@ class kibana::install {
     command => '/usr/bin/bundle install --path vendor',
     cwd     => '/opt/kibana',
     creates => '/opt/kibana/vendor',
+    timeout => "0",
   }
 }
