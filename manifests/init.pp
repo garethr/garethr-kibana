@@ -1,5 +1,5 @@
 class kibana(
-  $git_hash = 'edb4553',
+  $git_hash = 'aa50511',
 ){
   class { 'kibana::install': } ->
   class { 'kibana::config': } ~>
