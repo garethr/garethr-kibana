@@ -6,7 +6,7 @@ class kibana::install {
   }
 
   exec { 'untar_kibana':
-    command => 'tar xvf /usr/local/src/kibana-ruby.tar.gz',
+    command => '/bin/tar xvf /usr/local/src/kibana-ruby.tar.gz',
     cwd     => '/opt',
     creates => "/opt/rashidkpc-Kibana-${kibana::git_hash}",
     path    => '/bin',
@@ -20,7 +20,7 @@ class kibana::install {
   }
 
   exec { 'bundle_kibana':
-    command => 'bundle install --path vendor',
+    command => '/usr/local/bin/bundle install --path vendor',
     cwd     => '/opt/kibana',
     creates => '/opt/kibana/vendor',
   }
