@@ -25,4 +25,14 @@ describe 'kibana', :type => :class do
     it { should create_class('ruby')}
   end
 
+  context 'with an invalid manage ruby instruction' do
+    let(:params) { {'manage_ruby' => 'invalid'} }
+    it do
+      expect {
+        should_not create_class('ruby')
+      }.to raise_error(Puppet::Error)
+    end
+  end
+
+
 end
