@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 describe 'kibana', :type => :class do
+  let(:facts) { {:osfamily => 'Debian', :lsbdistcodename => 'precise'} }
 
   context 'no parameters' do
     it { should create_class('kibana::config')}
     it { should create_class('kibana::install')}
     it { should create_class('kibana::service')}
+
+    it { should include_class('git')}
 
     it { should contain_file('/opt/kibana/KibanaConfig.rb').with_content(/KibanaPort = 5601/)}
     it { should contain_file('/opt/kibana/KibanaConfig.rb').with_content(/Elasticsearch = "localhost:9200"/)}
