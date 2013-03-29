@@ -1,5 +1,5 @@
 name          'garethr-kibana'
-version       '0.1.0'
+version       '0.2.0'
 author        'garethr'
 license       'Apache License, Version 2.0'
 summary       'Module to manage the Kibana logstash interface'
