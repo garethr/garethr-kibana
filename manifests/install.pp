@@ -1,4 +1,6 @@
-class kibana::install {
+class kibana::install (
+  $source = 'https://github.com/rashidkpc/Kibana.git',
+) {
   include 'git'
 
   if $kibana::manage_ruby == true {
@@ -10,7 +12,7 @@ class kibana::install {
   vcsrepo { '/opt/kibana':
     ensure   => present,
     provider => git,
-    source   => 'git://github.com/rashidkpc/Kibana.git',
+    source   => $source,
     revision => 'kibana-ruby',
     before   => Bundler::Install['/opt/kibana'],
   }
