@@ -1,5 +1,6 @@
 class kibana::install {
-  include 'git'
+  require 'git'
+  require 'bundler'
 
   if $kibana::manage_ruby == true {
     class { 'ruby':
