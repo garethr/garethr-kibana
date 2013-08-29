@@ -13,6 +13,7 @@ class kibana::install {
     source   => 'git://github.com/rashidkpc/Kibana.git',
     revision => 'kibana-ruby',
     before   => Bundler::Install['/opt/kibana'],
+    require  => Class['git'],
   }
   bundler::install {'/opt/kibana':
   }
