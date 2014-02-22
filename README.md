@@ -13,6 +13,6 @@ The module includes a single class:
 
     include 'kibana'
 
-This installs Kibana and starts it running on port 5601 and connects to
+This clones kibana 2 from https://github.com/rashidkpc/Kibana and starts it running on port 5601 and connects to
 an Elasticsearch index running on localhost:9200. More configuration
 options for this module should be added soon.
