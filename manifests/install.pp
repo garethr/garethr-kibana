@@ -11,7 +11,7 @@ class kibana::install {
     ensure   => present,
     provider => git,
     source   => 'git://github.com/elasticsearch/kibana.git',
-    revision => 'master',
+    revision => $kibana::revision,
     before   => Bundler::Install['/opt/kibana'],
   }
   bundler::install {'/opt/kibana':
