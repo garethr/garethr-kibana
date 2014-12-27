@@ -10,8 +10,8 @@ class kibana::install {
   vcsrepo { '/opt/kibana':
     ensure   => present,
     provider => git,
-    source   => 'git://github.com/rashidkpc/Kibana.git',
-    revision => 'kibana-ruby',
+    source   => 'git://github.com/elasticsearch/kibana.git',
+    revision => 'master',
     before   => Bundler::Install['/opt/kibana'],
   }
   bundler::install {'/opt/kibana':
